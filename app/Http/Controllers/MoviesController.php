@@ -16,8 +16,8 @@ class MoviesController extends Controller
     public function index(Request $request)
     {
         $searchVal = $request->query('title');
-            if ($searchVal == $request) {
-                return Movie::search($searchVal);
+            if ($searchVal) {
+                return  Movie::where('title', 'LIKE', "%{$searchVal}%")->orderBy('title')->get();
             } else {
                 return Movie::all();
             }

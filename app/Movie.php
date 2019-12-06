@@ -9,7 +9,4 @@ class Movie extends Model
 {
     protected $guarded = ["id"];
 
-    static function search(Request $request){
-      return  Movie::query()->where('title', 'LIKE', "%{$searchVal}%")->orderBy('title')->get();
-    }
 }
